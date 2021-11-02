@@ -32,9 +32,6 @@ background-image: linear-gradient(325deg, #545059 1%, #380036 78%);
     {
        echo"<p style='color:red;'>"."invalid username or password"."</p>";
     }
-   else 
-     {
-     }
      ?> 
 <div style="margin-top:30px;">
 <lebal style="margin-left:-40%;font-size:20px;color:#cfcfcf;">username</lebal>
