@@ -1,0 +1,58 @@
+<?php 
+include "connect_db.php";
+session_start();
+$id=$_SESSION['id'];
+$add_about=new database();
+$work=htmlentities($_POST['inp1'],ENT_QUOTES);
+$education=htmlentities($_POST['inp2'],ENT_QUOTES);
+$place_lived=htmlentities($_POST['inp3'],ENT_QUOTES);
+$from_live=htmlentities($_POST['inp4'],ENT_QUOTES);
+$contact=htmlentities($_POST['inp5'],ENT_QUOTES);
+$dbt=htmlentities($_POST['inp6'],ENT_QUOTES);
+$rel=htmlentities($_POST['inp7'],ENT_QUOTES);
+$family=htmlentities($_POST['inp8'],ENT_QUOTES);
+$email=htmlentities($_POST['email'],ENT_QUOTES);
+
+$add_about->sql_high("about","*",null,"profile_id=$id");
+$temp_result=$add_about->show();
+if(sizeof($temp_result))
+{
+  $add_about->update("about",
+  ['profile_id'=>$id,
+'work'=>$work,
+'education'=>$education,
+'place_live'=>$place_lived,
+'contact'=>$contact,
+'btd'=>$dbt,
+'family'=>$family,
+'relationship'=>$rel,
+'from_live'=>$from_live,
+'email'=>$email],"profile_id=$id");
+if(sizeof($add_about->show()))
+{
+	 header('location:about.php');
+}
+}
+else
+{
+$result=$add_about->insert(
+"about",
+['profile_id'=>$id,
+'work'=>$work,
+'education'=>$education,
+'place_live'=>$place_lived,
+'contact'=>$contact,
+'btd'=>$dbt,
+'family'=>$family,
+'relationship'=>$rel,
+'from_live'=>$from_live,
+'email'=>$email,
+'phone_sts'=>0,
+'email_sts'=>0]
+);
+if($result)
+	 header('location:about.php');
+ else
+	 header('location:about.php?sts_id=1');
+}
+?>

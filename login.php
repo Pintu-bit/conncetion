@@ -11,8 +11,8 @@
  }
 #d
 {
-background-color:#545059;
-background-image: linear-gradient(325deg, #545059 1%, #380036 78%);
+background-color:#a8a8a8;
+
 }
 #logo{
      width:80%;
@@ -21,32 +21,40 @@ background-image: linear-gradient(325deg, #545059 1%, #380036 78%);
 }
 </style>
 </head>
-<body bgcolor="#545059">
+<body bgcolor="#e8e8e8">
  <center><h3 style="margin-top:10%;">PLEASE LOG IN </h3></center>
-<form action="" method="post" >
- <div id="d" style="border-radius:10px;border:solid 2px;border-color:#800000;width:35%;height:350px;margin-top:2%;margin-left:33%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+<form action="userlogin_db.php" method="post" >
+ <div id="d" style="border-radius:10px;border:solid 2px;border-color:#800000;width:35%;height:380px;margin-top:2%;margin-left:33%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 <center>
-  <div id="logo" ><img src="image/logo1.png" width="100%" height="100%" ></div>
+  <div id="logo" ><img src="imgs/mail_log01.png" width="80%" height="100%" ></div>
  <?php 
-  if(isset($_GET['id']))
+  if(isset($_GET['id']) && $_GET['id']==2)
     {
-       echo"<p style='color:red;'>"."invalid username or password"."</p>";
+       echo"<p style='color:red;font-size:16px;font-family:monospace;'>"."invalid username or password"."</p>";
     }
+  if(isset($_GET['id']) && $_GET['id']==3)
+	 {
+	    echo"<p style='color:red;font-size:16px;font-family:monospace;'><B>"."YOUR ACCOUNT HAVE BEEN BLOCK FOR 7 DAYS"."</B></p>";
+	 }
+   else 
+     {
+     }
      ?> 
 <div style="margin-top:30px;">
-<lebal style="margin-left:-40%;font-size:20px;color:#cfcfcf;">username</lebal>
+
 
 <br>
-<input type="text" class="input" name="username"/>
+<input type="text" class="input" name="username" placeholder="username"/>
 <br>
 <br>
-<lebal style="margin-left:-40%;font-size:20px;color:#cfcfcf;">password</lebal>
+
 <br>
-<input type="password" class="input"  name="password"/>
+<input type="password" class="input"  name="password" placeholder="Password"/>
 <br>
 <br>
 <input style="border:none;width:60%;height:30px;background-color:#3dff3d;" type="submit" value="LOG IN"/><br><br>
-<a  style="color:#00FF00;" href="">Reset password</a>
+<a  style="color:grey;font-family:monospace;font-size:14px;" href="">Reset password</a><br><br>
+<a  style="color:grey;font-family:monospace;font-size:14px;" href="create_user.php">Don't have an account? creatone</a>
 </div>
 
 </center>
